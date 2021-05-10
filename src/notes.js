@@ -10,6 +10,8 @@ var assert = {
     if (!assertionToCheck) {
       throw new Error("Assertion failed: " + assertionToCheck + " is not truthy");
     }
+    else {
+      console.log("Assertion succeeded: " + assertionToCheck + " is truthy");
+    }
   }
 }
-console.log('notes file')

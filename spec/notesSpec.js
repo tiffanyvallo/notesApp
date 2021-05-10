@@ -10,6 +10,14 @@ function testCircleRadiusDefaultsTo10() {
 
 };
 
-testCircleRadiusDefaultsTo10();
+// // an intentionally failing test
+// function testCircleRadiusDefaultsTo1000() {
+//
+//   var circle = new Circle();
+//   //expect thing to equal thing
+//   assert.isTrue(circle.radius === 1000);
+//
+// };
 
-console.log('notes spec file!')
+testCircleRadiusDefaultsTo10();
+// testCircleRadiusDefaultsTo1000();
