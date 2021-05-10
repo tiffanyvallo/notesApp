@@ -19,16 +19,23 @@ function expect(a){
       }},
     notToEqual: function(b){
       if (a != b) {
-        console.log('PASS')
+        console.log('PASS: a is not the same as b')
       } else {
-        console.log('FAIL')
+        console.log('FAIL: a is the same as b!')
       }},
     toBeAnArray: function(){
       if (a.constructor.name == "Array") {
-        console.log('PASS: an array')
+        console.log('PASS: this is an array')
       } else {
-        console.log('FAIL: not an array')
-      }}
+        console.log('FAIL: this is not an array')
+      }},
+    notToBeEmpty: function(){
+      if (a.length > 0) {
+        console.log('PASS: length is greater than 0 ')
+      } else {
+        console.log('FAIL: length is 0')
+      }
+    }
   }
 }
 
@@ -37,7 +44,9 @@ function it(input, callback){
   callback()
   // console.log('pass')
 }
-// we give
+
+// .length = 0
+
 it('2 + 2 equals 4',()=>{
   expect(2+2).toEqual(4)
 })
@@ -56,4 +65,8 @@ it('2 + 2 not to equal 55',()=>{
 
 it('[1,2] to be an array',()=>{
   expect([1,2]).toBeAnArray()
+})
+
+it('BOB ROSS not to be empty',()=>{
+  expect("BOB ROSS").notToBeEmpty()
 })
