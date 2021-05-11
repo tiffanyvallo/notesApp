@@ -53,14 +53,14 @@ it("can start empty", () => {
 it("can show a list of notes", () => {
   var notesManager = new Manager
   notesManager.create("Hello")
-  expect(notesManager.notesArray.length).toEqual(1)
+  console.log(notesManager.notesArray)
+  expect(notesManager.showNotes()).toEqual(notesManager.notesArray)
 })
 
 it("can create a title from content", () => {
   var note = new Note('Hello note testing created')
   expect(note.title).toEqual('Hello note testing cr...')
 })
-
 
 {
 // Test tests
