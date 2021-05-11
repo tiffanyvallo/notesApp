@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
   const updateList = () => {
     document.querySelector('#allNotes').innerHTML = '<ul>' + notesManager.notesArray.map(function (note) {
       return `<li> + ${note.title} + </li>`;
+      // return `<li> ${note.title} <button type='submit'>open note</button> </li>`;
     }).join('') + '</ul>';
   }
 
