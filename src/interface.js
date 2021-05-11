@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   var notesManager = new Manager();
-  console.log(notesManager)
 
+  document.querySelector('#noteInputTextArea')
   document.querySelector('#noteInput').addEventListener('submit',()=>{
     event.preventDefault();
-    notesManager.create(new Note())
+
+    text = document.querySelector('#noteInputTextArea')
+    console.log(text.value)
+    notesManager.create(new Note(`${text.value}`))
     console.log(notesManager)
   })
 
