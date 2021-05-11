@@ -1,16 +1,10 @@
 'use strict';
-
-class notesManager { 
+class Manager {
   constructor() {
     this.notesArray = []
-    
   }
-}
 
-class Note {
-  constructor(content) { 
-    this.content = content
-    this.title = content.slice(0, 21) + '...'
-    notesArray.push(note)
+  create(newNote){
+    this.notesArray.push(newNote)
   }
 }
