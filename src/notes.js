@@ -1,9 +1,9 @@
 'use-strict';
 
 class Note {
-  constructor(content = "DEFAULT CONTENT", idNum) {
+  constructor(content = "DEFAULT CONTENT", id) {
     this.content = content
     this.title = content.slice(0,21) + '...'
-    this.id = idNum
+    this.idNum = id
   }
 }
