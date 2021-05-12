@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", ()=> {
   var notesManager = new Manager();
   const updateList = () => {
+    // n = 0
     document.querySelector('#allNotes').innerHTML = '<ul>' + notesManager.notesArray.map(function (note) {
       return `<li> + ${note.title} + </li>`;
-      // return `<li> ${note.title} <button type='submit'>open note</button> </li>`;
+      // n += 1
+      // return `<li> ${note.title} <button id ="note${n}" type='submit'>open note</button> </li>`;
     }).join('') + '</ul>';
   }
 
