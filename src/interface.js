@@ -45,19 +45,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  tempNote = "this is my note :apple::apple:"
 
-  function detectEmoji(string){
-    x = string.split(' ')
-    x = x.join('')
-    console.log(x)
+  function detectEmoji(str){
+    x = str.split(' ').join('')
+    e = ''
+    inEmoji = false
+    for (let i = 0 ; i < str.length ; i ++){
+      if ((inEmoji == false) && (str[i] == ':')){
+        //swaps the boolean value of inEmoji
+        inEmoji = !inEmoji;
+        e += str[i]
+      } else if ((inEmoji == true) && (str[i] != ':')) {
+        e +=str[i]
+      } else if ((inEmoji == true) && (str[i] == ':')) {
+        inEmoji = !inEmoji;
+        e += str[i]
+      } else {continue}
+    }
+    console.log(e)
   }
   // GOAL: we want to create a function which takes in a string, and returns ALL CASES of emojis
   // including cases where ppl use multiple emojis.
   // e.g. ':apple: I like apples :banana:'
   // SHOULD return something like
   // :apple: :banana" or just [apple,  banana] etc.
-  
-  detectEmoji(tempNote)
+
+
+
+
+
 
 })
