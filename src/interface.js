@@ -28,4 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     // console.log(openNotesButtons)
   })
+  // function getEmoji() {
+  //   // const data = {text: ':apple:' };
+  //   return fetch('https://makers-emojify.herokuapp.com/', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({text: ':apple:' })
+  //     .then(results => {results.json() }).then(console.log)
+  //     //.then(results => {return results.json(emojified_text)
+  //   })
+  // }
 })
