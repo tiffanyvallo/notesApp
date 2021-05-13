@@ -38,25 +38,26 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(results => {return results.json();
       })
-      .then(console.log)
-      // .then(return)
+      .then(data => (data['emojified_text']))
+      .then(emoji => console.log(emoji))
   }
-  fetchEmoji(':banana:')
+  // fetchEmoji(':apple:')
 
 
-  //
-  // function getEmoji() {
-  //   // const data = {text: ':apple:' };
-  //   return fetch('https://makers-emojify.herokuapp.com/', {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({text: ':apple:' })
-  //     })
-  //     .then(results => {results.json() })
-  //     .then(console.log)
-  //     // .then(results => {return results.json(emojified_text)
-  //   }
-  //
-  // getEmoji()
+
+  tempNote = "this is my note :apple::apple:"
+
+  function detectEmoji(string){
+    x = string.split(' ')
+    x = x.join('')
+    console.log(x)
+  }
+  // GOAL: we want to create a function which takes in a string, and returns ALL CASES of emojis
+  // including cases where ppl use multiple emojis.
+  // e.g. ':apple: I like apples :banana:'
+  // SHOULD return something like
+  // :apple: :banana" or just [apple,  banana] etc.
+  
+  detectEmoji(tempNote)
 
 })
