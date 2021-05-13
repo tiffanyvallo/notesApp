@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // fetchEmoji(':apple:')
 
-
   function detectEmoji(str){
     e = ''
     inEmoji = false
@@ -60,5 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {continue}
     }
     console.log(e)
+    return e
   }
+
+  fetchEmoji(detectEmoji(':apple:'))
+  fetchEmoji(detectEmoji('I like to eat :banana:'))
+
 })
