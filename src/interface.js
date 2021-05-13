@@ -44,10 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // fetchEmoji(':apple:')
 
 
-
-
   function detectEmoji(str){
-    x = str.split(' ').join('')
     e = ''
     inEmoji = false
     for (let i = 0 ; i < str.length ; i ++){
@@ -64,15 +61,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     console.log(e)
   }
-  // GOAL: we want to create a function which takes in a string, and returns ALL CASES of emojis
-  // including cases where ppl use multiple emojis.
-  // e.g. ':apple: I like apples :banana:'
-  // SHOULD return something like
-  // :apple: :banana" or just [apple,  banana] etc.
-
-
-
-
-
-
 })
