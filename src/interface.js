@@ -28,14 +28,35 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     // console.log(openNotesButtons)
   })
+
+
+  function fetchEmoji(emoji){
+    fetch('https://makers-emojify.herokuapp.com/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ text:emoji})
+      })
+      .then(results => {return results.json();
+      })
+      .then(console.log)
+      // .then(return)
+  }
+  fetchEmoji(':banana:')
+
+
+  //
   // function getEmoji() {
   //   // const data = {text: ':apple:' };
   //   return fetch('https://makers-emojify.herokuapp.com/', {
   //     method: 'POST',
   //     headers: {'Content-Type': 'application/json'},
   //     body: JSON.stringify({text: ':apple:' })
-  //     .then(results => {results.json() }).then(console.log)
-  //     //.then(results => {return results.json(emojified_text)
-  //   })
-  // }
+  //     })
+  //     .then(results => {results.json() })
+  //     .then(console.log)
+  //     // .then(results => {return results.json(emojified_text)
+  //   }
+  //
+  // getEmoji()
+
 })
