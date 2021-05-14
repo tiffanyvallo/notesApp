@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   var notesManager = new Manager();
   const updateList = () => {
     document.querySelector('#allNotes').innerHTML = '<ul>' + notesManager.notesArray.map(function (note) {
-      return `<li> <a href= "#${note.idNum}">${note.title}</a> </li>` //` <button id="${note.idNum} class="openNotesBtn" type="submit">open note</button> </li>`;
+      return `<li> <a href= "#${note.idNum}">${note.title}</a> </li>`
+      // changed the href to the id so that it picks the id of the individual notes, makes it easier to find when we search for urls with hashes
     }).join('') + '</ul>';
   }
 
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
  
   window.addEventListener("hashchange", showNoteForCurrentPage);
+  //had to move this to inside the dom content loader, so that it can be always listening out for a hash change
 
   function showNoteForCurrentPage() {
     console.log(window.location)
@@ -32,8 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function showNote(id) {
     var note = notesManager.findById(id).content
+    // created a variable which goes into notesManager, and used the find by ID function to find the note's id and then return it
+    // chnaged the search to an id so that it is easier to find when searching through the array
     document
     .getElementById("allNotes")
+    // this was correct just needed to remove the # as this was not needed, as the document knows its already in the index.html
     .innerHTML = note
   }
   
