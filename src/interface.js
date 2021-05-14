@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var notesManager = new Manager();
   const updateList = () => {
     document.querySelector('#allNotes').innerHTML = '<ul>' + notesManager.notesArray.map(function (note) {
-      return `<li> ${note.title} <button id="${note.idNum}" class="openNotesBtn" type="submit">open note</button> </li>`;
+      return `<li> <a href= "#${note.title}">${note.title}</a> </li>` //` <button id="${note.idNum} class="openNotesBtn" type="submit">open note</button> </li>`;
     }).join('') + '</ul>';
   }
 
@@ -18,17 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(notesManager)
     updateList()
     })
+    updateList()
+    console.log(notesManager.notesArray)
     
-    var openNotesButtons = document.querySelectorAll('.openNotesBtn')
-    openNotesButtons.forEach(function(button) {
-      button.addEventListener('click', () => {
-      // console.log(button)
-      // console.log(button.id)
-      noteToOpen = notesManager.notesArray[button.id]
-      text.value = noteToOpen.content
-      })
-    })
+    // var openNotesButtons = document.querySelectorAll('.openNotesBtn')
+    // openNotesButtons.forEach(function(button) {
+    //   button.addEventListener('click', () => {
+    //   // console.log(button)
+    //   // console.log(button.id)
+    //   noteToOpen = notesManager.notesArray[button.id]
+    //   noteContent = noteToOpen.content
+    //   text.value = noteContent
+    //   })
+    // })
     // console.log(openNotesButtons)
+
+
   })
   
 
@@ -64,6 +69,28 @@ document.addEventListener("DOMContentLoaded", () => {
   //   console.log(e)
   // }
 })
+
+function notesLink() {
+  window.addEventListener("hashchange", showNoteForCurrentPage);
+}
+
+function showNoteForCurrentPage() {
+  showNote(getNoteFromURL(window.location));
+}
+
+function showNote(note) {
+  console.log(note)
+  console.log(document)
+  document
+  .getElementById(`${note.title}`)
+  .innerHTML = `${note.content}`
+}
+
+
+function getNoteFromURL(location) {
+  return location.hash.split("#")[1];
+}
+notesLink();
 
 async function createEmoji(string) {
   const fetchEmoji = await fetch('https://makers-emojify.herokuapp.com/', {
