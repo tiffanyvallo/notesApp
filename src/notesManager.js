@@ -7,4 +7,7 @@ class Manager {
   create(newNote){
     this.notesArray.push(newNote)
   }
+  findById(noteId){
+    return this.notesArray.filter(note => note.idNum === noteId)[0]
+  }
 }
