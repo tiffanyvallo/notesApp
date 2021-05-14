@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     // console.log(openNotesButtons)
   })
+  
 
   // function fetchEmoji(emoji){
   //   fetch('https://makers-emojify.herokuapp.com/', {
