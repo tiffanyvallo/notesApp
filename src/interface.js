@@ -12,11 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     text = document.querySelector('#noteInputTextArea')
     // console.log(text.value)
-    notesManager.create(new Note(`${text.value}`, `${idIter}`))
+    createEmoji(`${text.value}`).then((emojiText) => {
+    notesManager.create(new Note(`${emojiText}`, `${idIter}`))
     idIter += 1
     console.log(notesManager)
     updateList()
-
+    })
+    
     var openNotesButtons = document.querySelectorAll('.openNotesBtn')
     openNotesButtons.forEach(function(button) {
       button.addEventListener('click', () => {
@@ -29,36 +31,46 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(openNotesButtons)
   })
 
+  // function fetchEmoji(emoji){
+  //   fetch('https://makers-emojify.herokuapp.com/', {
+  //     method: 'POST',
+  //     headers: {'Content-Type':'application/json'},
+  //     body: JSON.stringify({ text:emoji})
+  //     })
+  //     .then(results => {return results.json();
+  //     })
+  //     .then(data => (data['emojified_text']))
+  //     .then(emoji => console.log(emoji))
+  // }
+  // // fetchEmoji(':apple:')
 
-  function fetchEmoji(emoji){
-    fetch('https://makers-emojify.herokuapp.com/', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ text:emoji})
-      })
-      .then(results => {return results.json();
-      })
-      .then(data => (data['emojified_text']))
-      .then(emoji => console.log(emoji))
-  }
-  // fetchEmoji(':apple:')
 
-
-  function detectEmoji(str){
-    e = ''
-    inEmoji = false
-    for (let i = 0 ; i < str.length ; i ++){
-      if ((inEmoji == false) && (str[i] == ':')){
-        //swaps the boolean value of inEmoji
-        inEmoji = !inEmoji;
-        e += str[i]
-      } else if ((inEmoji == true) && (str[i] != ':')) {
-        e +=str[i]
-      } else if ((inEmoji == true) && (str[i] == ':')) {
-        inEmoji = !inEmoji;
-        e += str[i]
-      } else {continue}
-    }
-    console.log(e)
-  }
+  // function detectEmoji(str){
+  //   e = ''
+  //   inEmoji = false
+  //   for (let i = 0 ; i < str.length ; i ++){
+  //     if ((inEmoji == false) && (str[i] == ':')){
+  //       //swaps the boolean value of inEmoji
+  //       inEmoji = !inEmoji;
+  //       e += str[i]
+  //     } else if ((inEmoji == true) && (str[i] != ':')) {
+  //       e +=str[i]
+  //     } else if ((inEmoji == true) && (str[i] == ':')) {
+  //       inEmoji = !inEmoji;
+  //       e += str[i]
+  //     } else {continue}
+  //   }
+  //   console.log(e)
+  // }
 })
+
+async function createEmoji(string) {
+  const fetchEmoji = await fetch('https://makers-emojify.herokuapp.com/', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({'text': string})
+    });
+    let detectEmoji = await fetchEmoji.json();
+    let response = await detectEmoji
+    return response.emojified_text
+}
